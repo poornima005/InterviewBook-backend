@@ -16,7 +16,7 @@ const path = require("path");
 require("dotenv").config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_CONNECT_URI, 
+mongoose.connect('mongodb://localhost:27017/interviewbook', 
 {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
@@ -554,6 +554,13 @@ app.get("/getallexperiences", async(req, res)=>{
     console.log(err);
   }
 });
+
+if(process.env.NODE_ENV == 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+ }
 
 app.listen(PORT, () => {
   console.log(`API running at Port ${PORT}`)
