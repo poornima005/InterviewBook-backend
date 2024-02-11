@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
 
 const answerSchema = new mongoose.Schema({
   questionID: { type: String },
