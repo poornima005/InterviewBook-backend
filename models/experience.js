@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
 
 const experienceSchema = new mongoose.Schema({
   query: { type: String, default: null },
