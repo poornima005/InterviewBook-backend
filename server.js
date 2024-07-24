@@ -555,7 +555,6 @@ app.get("/getallexperiences", async(req, res)=>{
   }
 });
 
-
-app.listen(PORT, () => {
-  console.log(`API running at Port ${PORT}`)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`API running at Port ${PORT}`);
 });
